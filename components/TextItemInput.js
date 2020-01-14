@@ -9,6 +9,7 @@ const TextItemInput = props => {
   const textInputHandler = (enteredText) => {
     setEnteredText(enteredText)
   }
+  
   // render and send to the app.js
   // the .bind() is to send value together with the onPress props.
   return (

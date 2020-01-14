@@ -1,10 +1,16 @@
 import React from 'react'
-import { Text , View, StyleSheet } from 'react-native'
+import { Text , View, StyleSheet, TouchableOpacity } from 'react-native'
 
+// use props to be send by bind is a easy way to do it( just remenber "this")
 const TextItem = props => {
-  return (<View style={styles.listItem}>
-    <Text>{props.item}</Text>
-  </View>)
+  return (
+    <TouchableOpacity onPress={props.onDelete.bind(this, props.id)}>
+      <View style={styles.listItem}>
+        <Text>{props.item}</Text>
+        <Text>{props.id}</Text>
+      </View>
+    </TouchableOpacity>
+  )
 }
 
 const styles = StyleSheet.create({

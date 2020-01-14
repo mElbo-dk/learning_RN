@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, StyleSheet, View, FlatList } from 'react-native'
+import { StyleSheet, View, FlatList } from 'react-native'
 import TextItem from './components/TextItems'
 import TextItemInput from './components/TextItemInput'
 
@@ -10,15 +10,28 @@ export default function App() {
   // the ramdom is to make uniqe numbers for the key to FlatList
   const addTextHandeler = ItemText => {
     setEnteredList(enteredList => [...enteredList, 
-      { key: Math.random().toString(), value: ItemText }])
+      { id: Math.random().toString(), value: ItemText }])
+  }
+
+  const deleteTextHandeler = idTextFilter => {
+    setEnteredList(enteredList => { 
+      return enteredList.filter((filterItem) => filterItem.id !== idTextFilter)
+    })
+    
   }
   // render the screen 
   return (
     <View style={styles.screen}>
+      
       <TextItemInput onAddText={addTextHandeler}/>
       <FlatList 
         data={enteredList}
-        renderItem={itemData => <TextItem item={itemData.item.value}/>}
+        renderItem={itemData => 
+          <TextItem 
+            id={itemData.item.id}
+            onDelete={deleteTextHandeler} 
+            
+            item={itemData.item.value}/>}
       />
     </View>
   )
