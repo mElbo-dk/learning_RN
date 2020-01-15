@@ -28,9 +28,9 @@ const TextItemInput = props => {
           style={styles.input}
           onChangeText={textInputHandler}
           value={enteredTextValue}/>
-        <View style={styles.inLine}>
-          <Button title='Cancel' color='orange' onPress={props.cancel}/>
-          <Button title='Add' onPress={addTextHandeler}/>
+        <View style={styles.buttons}>
+          <View style={styles.button_size}><Button title='Cancel' color='orange' onPress={props.cancel}/></View>
+          <View style={styles.button_size}><Button title='Add' onPress={addTextHandeler}/></View>
         </View>
       </View>
     </Modal>
@@ -50,8 +50,13 @@ const styles = StyleSheet.create({
     padding: 10 ,
     marginBottom: 10
   },
-  inLine: {
-    flexDirection: 'row'
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '60%'
+  },
+  button_size: {
+    width: '40%'
   }
 })
 
